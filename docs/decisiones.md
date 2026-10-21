@@ -31,3 +31,14 @@ Para mantener el orden, las obras se clasificarán obligatoriamente en:
 - **Acceso Anticipado:** Lectores pueden pagar por leer capítulos 1 semana antes que el resto.
 - **Reader Pass:** Suscripción mensual para leer todo el catálogo premium. Se reparte regalías a los autores según tiempo de lectura.
 - **Venta de EPUB:** El lector compra el libro digital. El autor se lleva el 100% del valor (Asterion solo cobra la comisión de la pasarela de pago).
+
+## 7. Actualización del Sistema de Ranking (Reglas Matemáticas)
+Para evitar el sesgo de volumen y premiar la calidad real, el ranking de cada género funciona así:
+
+- **Top 100 Semanal:** Cada género tiene un Top 100 de obras. Se actualiza cada domingo.
+- **Renovación Mensual:** Al final del mes, el ranking se limpia (excepto el Top 5) para dar oportunidad a nuevas obras.
+- **La Cláusula de Leyenda:** Las obras del Top 5 que tengan un alcance (lectores) 5 veces mayor que el promedio del Top 100, conservarán su lugar un mes adicional.
+- **El Peso de los Comentarios:**
+  - Comentario largo (Debate/Análisis): Vale 1 punto.
+  - Comentario corto (Reacción rápida): Vale 0.01 puntos (100 cortos = 1 punto).
+  - Hilos de conversación: Los comentarios que generan múltiples respuestas multiplican su valor para premiar la interacción comunitaria.
