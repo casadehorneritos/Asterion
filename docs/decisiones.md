@@ -15,11 +15,13 @@ Para mantener el orden, las obras se clasificarán obligatoriamente en:
 - **Respaldo de Autor:** El autor puede descargar una copia de seguridad de su obra en formato de texto/EPUB en cualquier momento.
 
 ## 4. Sistema de Métricas y Ranking (El Top Asterion)
+
 - **Prohibido el voto vacío:** Las calificaciones (0 a 5 estrellas) solo se habilitan al superar el 50% de la lectura de la obra.
 - **Estrellas por color:** Un color para obras en proceso, otro color para obras terminadas.
-- **Ranking por Género:** No hay un Top global, cada género tiene su propio Top.
-- **Fórmula del Ranking:** (Retención de lectura mayor al 50%) + (Comentarios de debate con más de 20 palabras). No cuentan emojis, ni "actualiza", ni comentarios de una sola línea.
+- **Ranking por Género:** No hay un Top global, cada género tiene su propio Top (Top 100 semanal).
+- **Fórmula del Ranking:** (Retención de lectura mayor al 50%) + (Comentarios de debate con más de 20 palabras). 
 - **La Completitud suma:** Las obras terminadas escalan posiciones más rápido.
+- **Optimización del Alcance (Backend):** Para calcular el alcance real sin sobrecargar la base de datos, la tabla de Obras contará con un contador automático de visitas (`Contador_Vistas`) y un registro de la última interacción (`Ultima_Actividad`). La tabla de `ProgresoLector` registrará la fecha de modificación para medir la retención en el tiempo.
 
 ## 5. Comunidad "Slow Writing"
 - Un foro interno (estilo Reddit) para autores donde se comparten borradores, se buscan Beta Readers y se debate sobre el proceso creativo.
