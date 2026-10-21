@@ -151,7 +151,10 @@
     <!-- Barra Superior -->
     <div class="top-bar">
         <div class="logo">ASTERION</div>
-        <div>🔍 👤</div>
+        <div>
+    <button onclick="cambiarModo()" style="background:none; border:none; color:inherit; font-size:16px; cursor:pointer; margin-right:10px;">🌗</button>
+    🔍 👤
+        </div>
     </div>
 
     <!-- Selector Santuario / Explorar -->
@@ -198,5 +201,27 @@
         <div class="nav-item">👤 Perfil</div>
     </div>
 
+    <script>
+    function cambiarModo() {
+        // Esta función toma el cuerpo de la página y le activa o desactiva la clase "modo-dia"
+        document.body.classList.toggle('modo-dia');
+        
+        // Este es un extra: cambiamos el color de las tarjetas y la barra inferior para que se adapten
+        const tarjetas = document.querySelectorAll('.tarjeta-obra');
+        const navInferior = document.querySelector('.bottom-nav');
+        
+        tarjetas.forEach(tarjeta => {
+            tarjeta.style.backgroundColor = tarjeta.style.backgroundColor === 'rgb(245, 242, 235)' ? '#e8e3d9' : '#f5f2eb';
+            // Si las letras no se leen bien en modo día, cambiamos su color también
+            tarjeta.style.color = tarjeta.style.color === 'rgb(224, 224, 224)' ? '#333' : '#333';
+        });
+
+        if(navInferior.style.backgroundColor === 'rgb(245, 242, 235)'){
+            navInferior.style.backgroundColor = '#0a1128'; // Vuelve a azul noche
+        } else {
+            navInferior.style.backgroundColor = '#f5f2eb'; // Pasa a beige
+        }
+    }
+    </script>
 </body>
 </html>
