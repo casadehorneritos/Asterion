@@ -28,7 +28,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Clase para cambiar a modo claro después */
+        /* Clase para cambiar a modo claro */
         .modo-dia {
             background-color: var(--fondo-dia);
             color: var(--texto-dia);
@@ -41,6 +41,11 @@
             align-items: center;
             padding: 15px 20px;
             border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: border-color 0.3s ease;
+        }
+
+        .modo-dia .top-bar {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
         }
         
         .logo {
@@ -75,6 +80,7 @@
         /* Contenedor del Feed */
         .feed {
             padding: 20px;
+            padding-bottom: 80px; /* Espacio para que la barra inferior no tape el texto */
         }
 
         .seccion-titulo {
@@ -108,6 +114,16 @@
             padding: 10px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.3);
             position: relative;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Ajuste de tarjetas para el modo día */
+        .modo-dia .tarjeta-obra {
+            background-color: #e8e3d9; 
+            color: #333;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .badge-ranking {
@@ -132,12 +148,20 @@
             background-color: var(--fondo-noche);
             padding: 15px 0;
             border-top: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .modo-dia .bottom-nav {
+            background-color: var(--fondo-dia);
+            border-top: 1px solid rgba(0,0,0,0.1);
         }
 
         .nav-item {
             font-size: 12px;
             text-align: center;
             opacity: 0.7;
+            text-decoration: none;
+            color: inherit;
         }
 
         .nav-item.activo {
@@ -152,8 +176,8 @@
     <div class="top-bar">
         <div class="logo">ASTERION</div>
         <div>
-    <button onclick="cambiarModo()" style="background:none; border:none; color:inherit; font-size:16px; cursor:pointer; margin-right:10px;">🌗</button>
-    🔍 👤
+            <button onclick="cambiarModo()" style="background:none; border:none; color:inherit; font-size:16px; cursor:pointer; margin-right:10px;">🌗</button>
+            🔍 👤
         </div>
     </div>
 
@@ -167,22 +191,27 @@
     <div class="feed">
         <div class="seccion-titulo">Recomendados para ti</div>
         <div class="carrusel">
+            
             <!-- Tarjeta 1 -->
-<a href="lectura.html" class="tarjeta-obra" style="text-decoration: none; color: inherit;">
-    <div class="badge-ranking">Top 3</div>
-    <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">El Imperio de Cristal</div>
-    <div style="font-size: 11px; opacity: 0.7;">Ciencia Ficción • Saga</div>
-</a>
-<!-- Tarjeta 2 -->
-<a href="lectura.html" class="tarjeta-obra" style="text-decoration: none; color: inherit;">
-    <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">Sombras de la Luna</div>
-    <div style="font-size: 11px; opacity: 0.7;">Fantasía • Novela</div>
-</a>
-<!-- Tarjeta 3 -->
-<a href="lectura.html" class="tarjeta-obra" style="text-decoration: none; color: inherit;">
-    <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">Poemas del Sur</div>
-    <div style="font-size: 11px; opacity: 0.7;">Poesía • Poemario</div>
-</a>
+            <a href="lectura.html?libro=El Imperio de Cristal" class="tarjeta-obra">
+                <div class="badge-ranking">Top 3</div>
+                <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">El Imperio de Cristal</div>
+                <div style="font-size: 11px; opacity: 0.7;">Ciencia Ficción • Saga</div>
+            </a>
+            
+            <!-- Tarjeta 2 -->
+            <a href="lectura.html?libro=Sombras de la Luna" class="tarjeta-obra">
+                <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">Sombras de la Luna</div>
+                <div style="font-size: 11px; opacity: 0.7;">Fantasía • Novela</div>
+            </a>
+            
+            <!-- Tarjeta 3 -->
+            <a href="lectura.html?libro=Poemas del Sur" class="tarjeta-obra">
+                <div style="font-size: 14px; font-weight: bold; margin-bottom: 5px;">Poemas del Sur</div>
+                <div style="font-size: 11px; opacity: 0.7;">Poesía • Poemario</div>
+            </a>
+        </div>
+
         <div class="seccion-titulo" style="margin-top: 20px;">Actualizaciones Recientes</div>
         <div style="font-size: 14px; line-height: 1.6; opacity: 0.8;">
             <p><strong>El Imperio de Cristal</strong> - Capítulo 12 subido hace 2 horas.</p>
@@ -192,34 +221,19 @@
 
     <!-- Navegación Inferior -->
     <div class="bottom-nav">
-        <div class="nav-item activo">🏠 Inicio</div>
+        <a href="index.html" class="nav-item activo">🏠 Inicio</a>
         <div class="nav-item">🔍 Explorar</div>
         <div class="nav-item">✍️ Escribir</div>
         <div class="nav-item">👥 Comunidad</div>
         <div class="nav-item">👤 Perfil</div>
     </div>
 
+    <!-- Script para el modo día/noche -->
     <script>
-    function cambiarModo() {
-        // Esta función toma el cuerpo de la página y le activa o desactiva la clase "modo-dia"
-        document.body.classList.toggle('modo-dia');
-        
-        // Este es un extra: cambiamos el color de las tarjetas y la barra inferior para que se adapten
-        const tarjetas = document.querySelectorAll('.tarjeta-obra');
-        const navInferior = document.querySelector('.bottom-nav');
-        
-        tarjetas.forEach(tarjeta => {
-            tarjeta.style.backgroundColor = tarjeta.style.backgroundColor === 'rgb(245, 242, 235)' ? '#e8e3d9' : '#f5f2eb';
-            // Si las letras no se leen bien en modo día, cambiamos su color también
-            tarjeta.style.color = tarjeta.style.color === 'rgb(224, 224, 224)' ? '#333' : '#333';
-        });
-
-        if(navInferior.style.backgroundColor === 'rgb(245, 242, 235)'){
-            navInferior.style.backgroundColor = '#0a1128'; // Vuelve a azul noche
-        } else {
-            navInferior.style.backgroundColor = '#f5f2eb'; // Pasa a beige
+        function cambiarModo() {
+            document.body.classList.toggle('modo-dia');
         }
-    }
     </script>
+
 </body>
 </html>
